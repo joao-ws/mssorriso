@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agendamento de Consulta</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Fundo cinza claro */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff; /* Fundo branco */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #0099cc; /* Azul claro */
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #0099cc; /* Azul claro */
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #0099cc; /* Borda azul claro */
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #0099cc; /* Azul claro */
+            color: #ffffff; /* Texto branco */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0077a3; /* Alterar a cor ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agendamento de Consulta</h1>
+        <form action="processar_formulario.php" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="data_consulta">Data da Consulta:</label>
+            <input type="date" id="data_consulta" name="data_consulta" required>
+
+            <label for="hora_consulta">Hora da Consulta:</label>
+            <input type="time" id="hora_consulta" name="hora_consulta" required>
+
+            <label for="tratamento">Tipo de Tratamento:</label>
+            <select id="tratamento" name="tratamento" required>
+                <option value="limpeza">Limpeza</option>
+                <option value="extração">Extração</option>
+                <option value="clareamento">Clareamento</option>
+                <option value="outro">Outro</option>
+            </select>
+
+            <label for="mensagem">Mensagem (opcional):</label>
+            <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+
+            <input type="submit" value="Agendar Consulta">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+CREATE DATABASE maissorriso_db
+	DEFAULT CHARACTER SET utf8
+	COLLATE utf8_general_ci;
+
+USE maissorriso_db;
+
+CREATE TABLE paciente (
+
+	id_Paciente INT AUTO_INCREMENT PRIMARY KEY,
+
+	nome_paciente VARCHAR(45) NOT NULL UNIQUE,
+	telefone BIGINT(11) AUTO_INCREMENT NOT NULL UNIQUE,
+	email VARCHAR(254) AUTO_INCREMENT NOT NULL UNIQUE
+
+);
+
+CREATE TABLE profissional (
+
+	id_Profissional INT AUTO_INCREMENT PRIMARY KEY,
+
+	nome_profissional VARCHAR(45) NOT NULL UNIQUE,
+	especialidade VARCHAR (45) NOT NULL UNIQUE
+
+);
+
+CREATE TABLE agendamento (
+
+	id_Agendamento INT AUTO_INCREMENT PRIMARY KEY,
+	id_Paciente INT NOT NULL,
+	id_Profissional INT NOT NULL,
+
+	hora TIME AUTO_INCREMENT NOT NULL UNIQUE,
+	data DATE AUTO_INCREMENT NOT NULL UNIQUE,
+	procedimento VARCHAR (45) NOT NULL UNIQUE
+
+	FOREIGN KEY (id_Paciente) REFERENCES paciente(id_Paciente)
+	FOREIGN KEY (id_Profissional) REFERENCES profissional(id_Profissional)
+);
+
+CREATE TABLE consulta (
+	
+	id_Consulta INT AUTO_INCREMENT PRIMARY KEY,
+	id_Agendamento INT NOT NULL,
+
+	status INT(1) AUTO_INCREMENT NOT NULL UNIQUE
+
+	FOREIGN KEY (id_Agendamento) REFERENCES agendamento(id_Agendamento)
+
+);
+	
+
+
+	
+

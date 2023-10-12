@@ -6,45 +6,45 @@ USE maissorriso_db;
 
 CREATE TABLE paciente (
 
-	id_Paciente INT AUTO_INCREMENT PRIMARY KEY,
+	id_paciente INT AUTO_INCREMENT PRIMARY KEY,
 
-	nome_paciente VARCHAR(45) NOT NULL UNIQUE,
-	telefone BIGINT(11) AUTO_INCREMENT NOT NULL UNIQUE,
-	email VARCHAR(254) AUTO_INCREMENT NOT NULL UNIQUE
+	nome_paciente VARCHAR(45) NOT NULL,
+	telefone BIGINT(11) NOT NULL,
+	email VARCHAR(254) NOT NULL
 
 );
 
 CREATE TABLE profissional (
 
-	id_Profissional INT AUTO_INCREMENT PRIMARY KEY,
+	id_profissional INT AUTO_INCREMENT PRIMARY KEY,
 
-	nome_profissional VARCHAR(45) NOT NULL UNIQUE,
-	especialidade VARCHAR (45) NOT NULL UNIQUE
+	nome_profissional VARCHAR(45) NOT NULL,
+	especialidade VARCHAR (45) NOT NULL
 
 );
 
 CREATE TABLE agendamento (
 
-	id_Agendamento INT AUTO_INCREMENT PRIMARY KEY,
-	id_Paciente INT NOT NULL,
-	id_Profissional INT NOT NULL,
+	id_agendamento INT AUTO_INCREMENT PRIMARY KEY,
+	id_paciente INT NOT NULL,
+	id_profissional INT NOT NULL,
 
-	hora TIME AUTO_INCREMENT NOT NULL UNIQUE,
-	data DATE AUTO_INCREMENT NOT NULL UNIQUE,
-	procedimento VARCHAR (45) NOT NULL UNIQUE
+	hora TIME NOT NULL UNIQUE,
+	data DATE NOT NULL UNIQUE,
+	procedimento VARCHAR (45) NOT NULL UNIQUE,
 
-	FOREIGN KEY (id_Paciente) REFERENCES paciente(id_Paciente)
-	FOREIGN KEY (id_Profissional) REFERENCES profissional(id_Profissional)
+	FOREIGN KEY (id_paciente) REFERENCES paciente(id_paciente),
+	FOREIGN KEY (id_profissional) REFERENCES profissional(id_profissional)
 );
 
 CREATE TABLE consulta (
 	
-	id_Consulta INT AUTO_INCREMENT PRIMARY KEY,
-	id_Agendamento INT NOT NULL,
+	id_consulta INT AUTO_INCREMENT PRIMARY KEY,
+	id_agendamento INT NOT NULL,
 
-	status INT(1) AUTO_INCREMENT NOT NULL UNIQUE
+	status INT(1) NOT NULL UNIQUE,
 
-	FOREIGN KEY (id_Agendamento) REFERENCES agendamento(id_Agendamento)
+	FOREIGN KEY (id_agendamento) REFERENCES agendamento(id_agendamento)
 
 );
 	
